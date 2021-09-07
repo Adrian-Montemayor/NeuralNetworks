@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 
 print(tf.__version__)
@@ -35,3 +37,14 @@ from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
+
+
+#Part2 Building the ANN
+#Initializing the ANN
+ann = tf.keras.models.Sequential()
+#Adding the input layer and the first hidden layer
+ann.add(tf.keras.layers.Dense(units=6, activation="relu"))
+ann.add(tf.keras.layers.Dense(units=6, activation="relu"))
+
+#Adding the output layer
+ann.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
