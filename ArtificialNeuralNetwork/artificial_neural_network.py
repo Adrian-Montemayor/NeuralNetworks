@@ -54,5 +54,21 @@ ann.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
 
 #for binay output, always use binary_crossentropy
 ann.compile(optimizer = "adam", loss = "binary_crossentropy", metrics = ["accuracy"])
+
 # Training the ANN on the Training set
 ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
+
+
+#Part4 - Excercise
+print(ann.predict(sc.transform([[1, 0, 0, 600, 1, 40, 3, 60000, 2, 1, 1, 50000]])) > 0.5)
+
+#Predicting the test set results
+print("Predicting the Test set results")
+y_pred =  ann.predict(X_test)
+y_pred = (y_pred > 0.5)
+print(np.concatenate((y_pred, y_test.values.reshape(-1,1)), axis=1))
+
+from sklearn.metrics import confusion_matrix, accuracy_score
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+print(accuracy_score(y_test, y_pred))
