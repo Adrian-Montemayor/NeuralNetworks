@@ -1,2 +1,2 @@
 # NeuralNetworks 
-I'm following the below course: https://www.udemy.com/course/deeplearning/
+I'm following this course: https://www.udemy.com/course/deeplearning/
